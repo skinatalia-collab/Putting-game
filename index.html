@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quarter Putt</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-label="Quarter Putt scorekeeper">
+        <div class="hero-art" aria-hidden="true">
+          <div class="green">
+            <div class="cup"></div>
+            <div class="flag-pole"></div>
+            <div class="flag"></div>
+            <div class="ball ball-a"></div>
+            <div class="ball ball-b"></div>
+            <div class="ball ball-c"></div>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Golf putting game</p>
+          <h1>Quarter Putt</h1>
+          <p>Track every putt, every quarter, and every tiny victory on the green.</p>
+        </div>
+      </section>
+
+      <section id="setupPanel" class="setup-panel" aria-labelledby="setup-title">
+        <div>
+          <h2 id="setup-title">Game Setup</h2>
+          <p class="muted">Choose 2-4 golfers, name the game period, then start entering holes.</p>
+        </div>
+
+        <div class="setup-grid">
+          <label>
+            Game period
+            <input id="periodName" type="text" value="Today's Round" maxlength="40">
+          </label>
+
+          <label>
+            Quarter value
+            <select id="quarterValue">
+              <option value="0.25">25 cents</option>
+              <option value="0.50">50 cents</option>
+              <option value="1">1 dollar</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="players-header">
+          <h3>Golfers</h3>
+          <div class="player-actions">
+            <button class="icon-button" id="removePlayer" type="button" aria-label="Remove golfer" title="Remove golfer">-</button>
+            <button class="icon-button" id="addPlayer" type="button" aria-label="Add golfer" title="Add golfer">+</button>
+          </div>
+        </div>
+
+        <div id="playerInputs" class="player-inputs"></div>
+
+        <button id="startGame" class="primary-button" type="button">Start Game</button>
+      </section>
+
+      <section id="historyPanel" class="history-panel" aria-labelledby="history-title">
+        <div class="history-heading">
+          <div>
+            <p class="eyebrow">Saved over time</p>
+            <h2 id="history-title">Golfer History</h2>
+          </div>
+          <button id="resetHistory" class="secondary-button danger" type="button">Reset History</button>
+        </div>
+        <div id="historyCards" class="history-grid"></div>
+      </section>
+
+      <section id="gameArea" class="game-area is-hidden" aria-live="polite">
+        <section class="scorebar" aria-labelledby="score-title">
+          <div>
+            <p id="periodLabel" class="eyebrow">Round</p>
+            <h2 id="score-title">Scoreboard</h2>
+          </div>
+          <div class="score-actions">
+            <button id="finishGame" class="primary-button compact" type="button" disabled>Finish Game</button>
+            <button id="newGame" class="secondary-button" type="button">New Game</button>
+          </div>
+        </section>
+
+        <section class="entry-panel" aria-labelledby="entry-title">
+          <div>
+            <h2 id="entry-title">Enter Hole <span id="holeNumber">1</span></h2>
+            <p class="muted">Lowest putts wins the quarter from every golfer with more putts.</p>
+          </div>
+
+          <div id="puttInputs" class="putt-grid"></div>
+
+          <div class="entry-actions">
+            <button id="addHole" class="primary-button" type="button">Record Hole</button>
+            <button id="undoHole" class="secondary-button" type="button" disabled>Undo Last</button>
+          </div>
+        </section>
+
+        <section class="totals-panel" aria-label="Current totals">
+          <div class="panel-heading">
+            <h2>Current Game</h2>
+          </div>
+          <div id="leaderCards" class="leader-grid"></div>
+        </section>
+
+        <section class="ledger-panel" aria-labelledby="ledger-title">
+          <div class="ledger-heading">
+            <h2 id="ledger-title">Hole Ledger</h2>
+            <button id="clearScores" class="secondary-button danger" type="button">Clear Scores</button>
+          </div>
+          <div id="ledgerList" class="ledger-list"></div>
+        </section>
+      </section>
+
+      <section id="celebration" class="celebration is-hidden" aria-live="assertive" aria-labelledby="celebration-title">
+        <div class="celebration-card">
+          <div class="confetti-field" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class="eyebrow">Winner salute</p>
+          <h2 id="celebration-title">Salute to the winner</h2>
+          <p id="winnerNames" class="winner-names"></p>
+          <div id="winnerStats" class="winner-stats"></div>
+          <div class="salute-stage" aria-hidden="true">
+            <div class="salute-flag"></div>
+            <div class="salute-cup"></div>
+            <div class="salute-ball"></div>
+          </div>
+          <div class="celebration-actions">
+            <button id="closeCelebration" class="secondary-button" type="button">Back to Scorecard</button>
+            <button id="nextGame" class="primary-button compact" type="button">Start Next Game</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
